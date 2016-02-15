@@ -106,7 +106,7 @@ public class ContextlessNPCategorizer implements AnnotatorTokenSpan<TypedNP> {
       }
     }
 
-    return null;
+    return annotationsNP;
   }
 
 }
