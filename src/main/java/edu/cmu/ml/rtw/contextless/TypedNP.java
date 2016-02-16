@@ -12,6 +12,13 @@ public class TypedNP implements StringSerializable {
     this.type = type;
   }
 
+ String getType(){
+   return type;
+ }
+ 
+ String getNP(){
+   return np;
+ }
   public String toString() {
 
     StringBuilder sb = new StringBuilder(np).append("|");
