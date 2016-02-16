@@ -12,11 +12,11 @@ public class TypedNP implements StringSerializable {
     this.type = type;
   }
 
- String getType(){
+ public String getType(){
    return type;
  }
  
- String getNP(){
+ public String getNP(){
    return np;
  }
   public String toString() {
