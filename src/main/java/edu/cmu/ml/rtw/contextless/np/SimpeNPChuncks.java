@@ -66,7 +66,7 @@ public class SimpeNPChuncks {
       nounPhrase2,
       nounPhrase3 }));
   private static List<String> nounPhrasesProper = new ArrayList<String>(
-      Arrays.asList(new String[] { np_currency, anynumber, nounPhrase, nounPhraseIN }));
+      Arrays.asList(new String[]  {nounPhrase, nounPhraseIN }));
 
   int maxSentenceSize = 200;
   boolean lowerCaseNPs = false;

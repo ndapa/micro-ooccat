@@ -92,7 +92,7 @@ public class ContextlessNPCategorizer implements AnnotatorTokenSpan<TypedNP> {
         wordSequence.appendWord(words.get(j));
       }
 
-      List<NounPhrase> nps = chunker.locateNounPhrasePosition(wordSequence);
+      List<NounPhrase> nps = chunker.locateNounPhrasePositionProperNouns(wordSequence);
       for (NounPhrase NP : nps) {
         String name = NP.toString().toLowerCase();
         if (nellTypes.get(name) != null) {

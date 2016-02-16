@@ -9,7 +9,7 @@ import edu.cmu.ml.rtw.generic.util.FileUtil;
 
 public class NELLTypes {
 
-  static final String entityTypes = "typed_nps.tsv";
+  static final String entityTypes = "typed_nps_new.tsv";
   HashMap<String, HashSet<String>> typedNPS = new HashMap<String, HashSet<String>>();
 
   public NELLTypes() {
