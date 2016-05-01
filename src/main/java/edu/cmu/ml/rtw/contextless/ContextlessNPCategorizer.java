@@ -82,6 +82,8 @@ public class ContextlessNPCategorizer implements AnnotatorTokenSpan<TypedNP> {
 
     }
 
+    HashSet<String> seen = new HashSet<String>();
+
     for (int sentenceIndex = 0; sentenceIndex < document.getSentenceCount(); sentenceIndex++) {
       List<PoSTag> tags = document.getSentencePoSTags(sentenceIndex);
       List<String> words = document.getSentenceTokenStrs(sentenceIndex);
@@ -93,20 +95,29 @@ public class ContextlessNPCategorizer implements AnnotatorTokenSpan<TypedNP> {
       }
 
       List<NounPhrase> nps = chunker.locateNounPhrasePositionProperNouns(wordSequence);
+
       for (NounPhrase NP : nps) {
         String name = NP.toString().toLowerCase();
+        String id = name + "_" + sentenceIndex + "_" + NP.startInWordSequence() + "_" + NP.endInWordSequence();
+        if (seen.contains(id)) continue;
+        seen.add(id);
+        name = name.trim();
         if (nellTypes.get(name) != null) {
-          TokenSpan tokenspan = new TokenSpan(document, sentenceIndex, NP.startInWordSequence(), NP.endInWordSequence()+1);
+          TokenSpan tokenspan = new TokenSpan(document, sentenceIndex, NP.startInWordSequence(), NP.endInWordSequence() + 1);
 
           for (String type : nellTypes.get(name)) {
-            TypedNP tn = new TypedNP(NP.toString(), type);
-            annotationsNP.add(new Triple<TokenSpan, TypedNP, Double>(tokenspan, tn, 0.8));
+            String[] candidate = type.split(" ");
+            double conf = 0.8;
+            if (candidate.length > 1) {
+              conf = Double.parseDouble(candidate[1]);
+            }
+            String type_name = candidate[0].trim();
+            TypedNP tn = new TypedNP(NP.toString(), type_name, conf);
+            annotationsNP.add(new Triple<TokenSpan, TypedNP, Double>(tokenspan, tn, conf));
           }
         }
       }
     }
-
     return annotationsNP;
   }
-
 }

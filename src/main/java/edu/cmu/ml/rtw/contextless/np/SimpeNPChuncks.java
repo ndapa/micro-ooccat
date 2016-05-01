@@ -56,11 +56,11 @@ public class SimpeNPChuncks {
   final String currency_prefix = "";
 
   private static List<String> nounPhrases = new ArrayList<String>(Arrays.asList(new String[] {
-      percentage,
-      npDay1,
-      npDay2,
-      np_currency,
-      anynumber,
+//      percentage,
+//      npDay1,
+//      npDay2,
+//      np_currency,
+//      anynumber,
       nounPhraseIN,
       nounPhrase,
       nounPhrase2,
@@ -291,7 +291,7 @@ public class SimpeNPChuncks {
   public List<NounPhrase> locateNounPhrasePositionProperNouns(WordSequence wordSequence) {
     List<NounPhrase> nounPhraseList = new ArrayList<NounPhrase>();
 
-    for (String nounphrasePattern : nounPhrasesProper) {
+    for (String nounphrasePattern : nounPhrases) {
       Pattern familyNameSuffixPattern = Pattern.compile(nounphrasePattern);
       Matcher matcher = familyNameSuffixPattern.matcher(wordSequence.TagtoString());
 

@@ -9,7 +9,7 @@ import edu.cmu.ml.rtw.generic.util.FileUtil;
 
 public class NELLTypes {
 
-  static final String entityTypes = "typed_nps_new.tsv";
+  static final String entityTypes = "clueweb-type-annotated-nps.csv";
   HashMap<String, HashSet<String>> typedNPS = new HashMap<String, HashSet<String>>();
 
   public NELLTypes() {
@@ -33,6 +33,7 @@ public class NELLTypes {
       while (i < parts.length) {
         types.add(parts[i++]);
       }
+      
       nellTypes.put(entity, types);
     }
 

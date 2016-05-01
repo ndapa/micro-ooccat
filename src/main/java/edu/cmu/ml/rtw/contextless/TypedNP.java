@@ -6,10 +6,12 @@ public class TypedNP implements StringSerializable {
 
   String np;
   String type;
+  double confidence;
 
-  public TypedNP(String np, String type) {
+  public TypedNP(String np, String type, double confidence) {
     this.np = np;
     this.type = type;
+    this.confidence = confidence;
   }
 
  public String getType(){
@@ -19,10 +21,15 @@ public class TypedNP implements StringSerializable {
  public String getNP(){
    return np;
  }
+ 
+ public double getConf(){
+   return confidence;
+ }
   public String toString() {
 
     StringBuilder sb = new StringBuilder(np).append("|");
-    sb.append(type);
+    sb.append(type).append("|");
+    sb.append(confidence);
     return sb.toString();
   }
 
